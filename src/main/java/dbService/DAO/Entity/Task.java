@@ -13,13 +13,13 @@ public class Task {
     private String task_todo;
 
     @Column(name = "task_isdone")
-    private boolean isDone;
+    private boolean done;
 
     public Task(){}
 
     public Task(String task_todo) {
         this.task_todo = task_todo;
-        this.isDone = false;
+        this.done = false;
     }
 
     public int getId() {
@@ -39,10 +39,10 @@ public class Task {
     }
 
     public boolean isDone() {
-        return isDone;
+        return done;
     }
 
     public void setDone(boolean done) {
-        isDone = done;
+        this.done = done;
     }
 }

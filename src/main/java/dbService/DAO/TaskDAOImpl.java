@@ -51,8 +51,9 @@ public class TaskDAOImpl implements TaskDAO{
 
         sessionFactory = buildSessionFactory();
         Session session = sessionFactory.openSession();
-        Query query = session.createQuery("FROM tasks", Task.class);
+        Query query = session.createQuery("FROM Task", Task.class);
         tasks = query.getResultList();
+        session.close();
         return tasks;
     }
 

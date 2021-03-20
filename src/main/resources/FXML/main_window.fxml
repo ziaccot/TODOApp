@@ -35,6 +35,6 @@
         <Button layoutX="62.0" layoutY="10.0" mnemonicParsing="false" text="Delete Task" />
     </HBox>
     <ScrollPane VBox.vgrow="ALWAYS">
-        <TableView />
+        <TableView fx:id="tableView"/>
     </ScrollPane>
 </VBox>

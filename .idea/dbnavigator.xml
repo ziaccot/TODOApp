@@ -26,14 +26,13 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="aeae5a7a-07f4-46aa-a45e-903b25834e57">
-        <schema name="pg_catalog" object-types="function" />
-        <schema name="public" object-types="function, dataset trigger, table, column, view, sequence, index, constraint" />
+        <schema name="public" object-types="view, table" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="aeae5a7a-07f4-46aa-a45e-903b25834e57">
-      <console name="TODO DB" type="STANDARD" schema="information_schema" session="Main" />
+      <console name="TODO DB" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
