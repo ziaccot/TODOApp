@@ -1,6 +1,7 @@
 package dbService.DAO;
 
 import dbService.DAO.Entity.Task;
+import dialog.ErrorDialog;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -25,7 +26,7 @@ public class TaskDAOImpl implements TaskDAO{
             session.getTransaction().commit();
         }catch (HibernateException ex){
             session.getTransaction().rollback();
-            throw new HibernateException(ex);
+            new ErrorDialog("SQL Error", ex.getMessage(), ex.getStackTrace().toString()).showAndWait();
         }
         session.close();
     }
@@ -40,7 +41,7 @@ public class TaskDAOImpl implements TaskDAO{
             session.getTransaction().commit();
         }catch (HibernateException ex){
             session.getTransaction().rollback();
-            throw new HibernateException(ex);
+            new ErrorDialog("SQL Error", ex.getMessage(), ex.getStackTrace().toString()).showAndWait();
         }
         session.close();
     }
@@ -70,8 +71,9 @@ public class TaskDAOImpl implements TaskDAO{
             }
             return sessionFactory;
         }catch (Throwable ex){
-            throw new ExceptionInInitializerError(ex);
+            new ErrorDialog("SQL Error", ex.getMessage(), ex.getStackTrace().toString()).showAndWait();
         }
+        return null;
     }
 
     public static void shutdown(){
