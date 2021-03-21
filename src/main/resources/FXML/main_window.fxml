@@ -17,8 +17,8 @@
             <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Close" />
         </Menu>
         <Menu mnemonicParsing="false" text="Edit">
-            <MenuItem mnemonicParsing="false" text="Add" />
-            <MenuItem mnemonicParsing="false" text="Modify" />
+            <MenuItem mnemonicParsing="false" text="Add" onAction="#onAddTaskClick"/>
+            <MenuItem mnemonicParsing="false" text="Modify" onAction="#onEditTaskClick"/>
             <MenuItem mnemonicParsing="false" text="Delete" />
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
@@ -29,8 +29,8 @@
         <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
         </padding>
-        <Button mnemonicParsing="false" text="Add Task" />
-        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Edit Task" />
+        <Button mnemonicParsing="false" text="Add Task" onAction="#onAddTaskClick"/>
+        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Edit Task" onAction="#onEditTaskClick"/>
         <Button layoutX="62.0" layoutY="10.0" mnemonicParsing="false" text="Delete Task" />
     </HBox>
    <AnchorPane VBox.vgrow="ALWAYS">
