@@ -3,6 +3,7 @@ package controller;
 import dbService.DAO.Entity.Task;
 import dbService.DBService;
 import dialog.AboutDialog;
+import dialog.DeleteDialog;
 import dialog.ErrorDialog;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -78,6 +79,18 @@ public class MainWindowController implements Initializable {
         }
     }
 
+    public void onDeleteTaskClick(){
+        if (tableView.getSelectionModel().getSelectedItem() == null) return;
+
+        DeleteDialog dialog = new DeleteDialog(tableView.getSelectionModel().getSelectedItem());
+        Optional<ButtonType> clickedButton = dialog.showAndWait();
+
+        if (clickedButton.get().getButtonData().isDefaultButton()){
+            tableView.getItems().remove(tableView.getSelectionModel().getSelectedIndex());
+            if (saved) saved = false;
+        }
+    }
+
 
     public void closeApp(){
         Platform.exit();
@@ -95,11 +108,11 @@ public class MainWindowController implements Initializable {
         taskColumn.setCellValueFactory(new PropertyValueFactory<Task, String>("task_todo"));
         doneColumn.setCellValueFactory(new PropertyValueFactory<Task, Boolean>("done"));
 
-        taskColumn.setMinWidth(20);
 
         ObservableList<Task> list = FXCollections.observableList(new DBService().getAllTask());
         tableView.setItems(list);
         tableView.getColumns().addAll(taskColumn, doneColumn);
+
         tableView.getColumns().get(0).setMinWidth(280);
         tableView.getColumns().get(0).setPrefWidth(280);
 

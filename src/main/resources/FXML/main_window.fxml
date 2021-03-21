@@ -19,7 +19,7 @@
         <Menu mnemonicParsing="false" text="Edit">
             <MenuItem mnemonicParsing="false" text="Add" onAction="#onAddTaskClick"/>
             <MenuItem mnemonicParsing="false" text="Modify" onAction="#onEditTaskClick"/>
-            <MenuItem mnemonicParsing="false" text="Delete" />
+            <MenuItem mnemonicParsing="false" text="Delete" onAction="#onDeleteTaskClick"/>
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
             <MenuItem id="menuAbout" mnemonicParsing="false" onAction="#onMenuAboutClick" text="About" />
@@ -31,7 +31,7 @@
         </padding>
         <Button mnemonicParsing="false" text="Add Task" onAction="#onAddTaskClick"/>
         <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Edit Task" onAction="#onEditTaskClick"/>
-        <Button layoutX="62.0" layoutY="10.0" mnemonicParsing="false" text="Delete Task" />
+        <Button layoutX="62.0" layoutY="10.0" mnemonicParsing="false" text="Delete Task" onAction="#onDeleteTaskClick"/>
     </HBox>
    <AnchorPane VBox.vgrow="ALWAYS">
          <TableView fx:id="tableView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
