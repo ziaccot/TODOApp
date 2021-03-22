@@ -2,9 +2,7 @@ package controller;
 
 import dbService.DAO.Entity.Task;
 import dbService.DBService;
-import dialog.AboutDialog;
-import dialog.DeleteDialog;
-import dialog.ErrorDialog;
+import dialog.*;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,7 +18,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MainWindowController implements Initializable {
-    private boolean saved = true;
+
     @FXML
     private TableView<Task> tableView;
 
@@ -45,8 +43,9 @@ public class MainWindowController implements Initializable {
                 if (controller.getTask().isEmpty())
                     new ErrorDialog("Empty Task", null, "You can not add an empty task").showAndWait();
                 else {
-                    tableView.getItems().add(new Task(controller.getTask()));
-                    if (saved) saved = false;
+                    Task task = new Task(controller.getTask());
+                    tableView.getItems().add(task);
+                    new DBService().addTask(task);
                 }
             }
         } catch (IOException e) {
@@ -72,7 +71,7 @@ public class MainWindowController implements Initializable {
             if (clickedButton.get() == ButtonType.APPLY){
                 controller.modifyTask();
                 tableView.getItems().set(tableView.getSelectionModel().getSelectedIndex(), controller.getTask());
-                if (saved) saved = false;
+                new DBService().addTask(controller.getTask());
             }
         }catch (IOException e){
             new ErrorDialog("FXML Error", e.getMessage(), e.getStackTrace().toString());
@@ -86,8 +85,8 @@ public class MainWindowController implements Initializable {
         Optional<ButtonType> clickedButton = dialog.showAndWait();
 
         if (clickedButton.get().getButtonData().isDefaultButton()){
+            new DBService().deleteTask(tableView.getSelectionModel().getSelectedItem());
             tableView.getItems().remove(tableView.getSelectionModel().getSelectedIndex());
-            if (saved) saved = false;
         }
     }
 
@@ -117,4 +116,5 @@ public class MainWindowController implements Initializable {
         tableView.getColumns().get(0).setPrefWidth(280);
 
     }
+
 }

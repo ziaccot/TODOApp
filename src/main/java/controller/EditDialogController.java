@@ -33,6 +33,6 @@ public class EditDialogController {
     }
 
     public void setCheckDone(boolean done) {
-        this.checkDone.setDisable(done);
+        this.checkDone.setSelected(done);
     }
 }

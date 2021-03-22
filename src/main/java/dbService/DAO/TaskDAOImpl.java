@@ -31,6 +31,7 @@ public class TaskDAOImpl implements TaskDAO{
         session.close();
     }
 
+
     @Override
     public void deleteTask(Task task) {
         sessionFactory = buildSessionFactory();
@@ -45,6 +46,7 @@ public class TaskDAOImpl implements TaskDAO{
         }
         session.close();
     }
+
 
     @Override
     public List<Task> getAll() {

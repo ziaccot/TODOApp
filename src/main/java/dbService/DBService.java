@@ -19,9 +19,11 @@ public class DBService {
         getTaskDAO().addTask(task);
     }
 
+
     public void deleteTask(Task task){
         getTaskDAO().deleteTask(task);
     }
+
 
     public List<Task> getAllTask(){
         return getTaskDAO().getAll();
